@@ -62,6 +62,13 @@
         "storageAccountId": {
             "type": "string",
             "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+        },
+        "resourceIds": {
+            "type": "array",
+            "value": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            ]
         }
     }
 }

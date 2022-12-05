@@ -33,5 +33,5 @@ jobs:
         parameters: storageAccountType=Standard_LRS storageAccountName=hqtestadls2bicep
 
       # output containerName variable from template
-    - run: echo ${{ steps.deploybicep.outputs.storageAccountId }}
-    - run: echo ${{ steps.deployarm.outputs.storageAccountId }}
+    - run: echo ${{ steps.deploybicep.outputs.resourceIds }}
+    - run: echo ${{ steps.deployarm.outputs.resourceIds }}
