@@ -14,13 +14,24 @@ jobs:
         creds: ${{ secrets.AZ_CRED }}
 
       # Deploy ARM template
-    - name: Run ARM deploy
+    - name: Run ARM deploy with ARM template
+      id: deployarm
       uses: azure/arm-deploy@v1
       with:
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.AZURE_RG }}
+        subscriptionId: 25d4753f-341d-4ce7-8641-646cf928294c
+        resourceGroupName: hqtestrg
         template: ./Storage.template.json
-        parameters: storageAccountType=Standard_LRS
+        parameters: storageAccountType=Standard_LRS storageAccountName=hqtestadls2arm
+      # Deploy ARM template
+    - name: Run ARM deploy with Biecp
+      id: deploybicep
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: 25d4753f-341d-4ce7-8641-646cf928294c
+        resourceGroupName: hqtestrg
+        template: ./Storage.bicep
+        parameters: storageAccountType=Standard_LRS storageAccountName=hqtestadls2bicep
 
       # output containerName variable from template
-    - run: echo ${{ steps.deploy.outputs.containerName }}
+    - run: echo ${{ steps.deploybicep.outputs.storageAccountId }}
+    - run: echo ${{ steps.deployarm.outputs.storageAccountId }}
