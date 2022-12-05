@@ -65,10 +65,7 @@
         },
         "resourceIds": {
             "type": "array",
-            "value": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
-            ]
+            "value": "[deployment().properties.template.resources[*].id]"
         }
     }
 }

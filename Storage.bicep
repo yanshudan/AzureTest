@@ -29,4 +29,4 @@ resource sa 'Microsoft.Storage/storageAccounts@2022-05-01' = {
 
 output storageAccountName string = storageAccountName
 output storageAccountId string = sa.id
-output resourceIds array = [sa.id, sa.name, sa.location, sa.sku, sa.kind, sa.properties]
+output resourceIds object = deployment()
