@@ -55,17 +55,9 @@
         }
     ],
     "outputs": {
-        "storageAccountName": {
+        "deploymentName": {
             "type": "string",
-            "value": "[parameters('storageAccountName')]"
-        },
-        "storageAccountId": {
-            "type": "string",
-            "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
-        },
-        "resourceIds": {
-            "type": "array",
-            "value": "[deployment().properties.template.resources[*].id]"
+            "value": "[deployment().name]"
         }
     }
 }
