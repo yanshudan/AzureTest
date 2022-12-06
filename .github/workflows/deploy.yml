@@ -22,7 +22,7 @@ jobs:
         resourceGroupName: hqtestrg
         template: ./Storage.template.json
         parameters: storageAccountType=Standard_LRS storageAccountName=hqtestadls2arm
-    - run: echo ${{ steps.deployarm.outputs.resourceIds }}
+    - run: echo ${{ steps.deployarm.outputs.deploymentName }}
       # Deploy Biecp
     - name: Deploy with Biecp
       id: deploybicep
